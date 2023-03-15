@@ -26,3 +26,11 @@ class DirectoryWatcher:
 class DirectoryHandler(FileSystemEventHandler):  
     @staticmethod
     def on_any_event(event):
+        src_1 = "./watch_dir/src/"
+        src_2 = "./watch_dir/src/"
+        dst_path = "./watch_dir/dst/"
+        if event.is_directory:
+            print("File is created - %s." %event.src_path)
+if __name__ == '__main__':
+    w = DirectoryWatcher()
+    w.run()
