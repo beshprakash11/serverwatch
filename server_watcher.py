@@ -4,16 +4,6 @@ import shutil
 from watchdog.observers import Observer
 from watchdog.events import FileSystemEventHandler
 
-
-"""
-Watch directory, source, and destnation directory
-"""
-
-src_1 = "./watch_dir/src/"
-src_2 = "./watch_dir/src/"
-dst_path = "./watch_dir/dst/"
-
-
 class Watcher:
     DIRECTORY_TO_WATCH = "./watch_dir/src/"
     def __init__(self):
@@ -35,6 +25,9 @@ class Watcher:
 class Handler(FileSystemEventHandler):  
     @staticmethod
     def on_any_event(event):
+        src_1 = "./watch_dir/src/"
+        src_2 = "./watch_dir/src/"
+        dst_path = "./watch_dir/dst/"
         if event.is_directory:
             return None
         elif event.event_type == 'created':            
