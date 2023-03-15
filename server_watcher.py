@@ -41,9 +41,9 @@ class Handler(FileSystemEventHandler):
             print("File is created - %s." %event.src_path)
 
             str1 = event.src_path
-            if  str2 in str1:
-                str2 = str1.replace(str2,'')
-            filename, extension = os.path.splitext(str2) 
+            if  src_2 in str1:
+                src_2 = str1.replace(src_2,'')
+            filename, extension = os.path.splitext(src_2) 
             values = {'file_name':filename}
             src_path = event.src_path
             print("Source: ", src_1 + filename)
