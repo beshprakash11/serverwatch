@@ -127,3 +127,12 @@ dmypy.json
 
 # Pyre type checker
 .pyre/
+
+test_dst/
+test_src/
+.cwatchdog.py
+.lengemann_watcher.py
+.watchdog_y.py
+.watchdogDirectory.py
+.watchdogx.py
+.welcome_app.py
