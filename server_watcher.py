@@ -54,3 +54,6 @@ class Handler(FileSystemEventHandler):
             except:
                 print("Data format is not valid !!")
 
+if __name__ == '__main__':
+    w = Watcher()
+    w.run()
