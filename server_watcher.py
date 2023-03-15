@@ -8,13 +8,14 @@ from watchdog.events import FileSystemEventHandler
 """
 Watch directory, source, and destnation directory
 """
-watch_dir = "./watch_dir/src/"
+
 src_1 = "./watch_dir/src/"
 src_2 = "./watch_dir/src/"
 dst_path = "./watch_dir/dst/"
 
 
 class Watcher:
+    DIRECTORY_TO_WATCH = "./watch_dir/src/"
     def __init__(self):
         self.observer = Observer()
 
