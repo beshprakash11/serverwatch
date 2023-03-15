@@ -47,6 +47,21 @@ class Handler(FileSystemEventHandler):
                 shutil.copy(src_path, dst_path)
             except:
                 print("Data format is not valid !!")
+        
+        elif event.event_type == 'modified': 
+            print("Data modified - %s." % event.src_path) 
+            str1 = event.src_path
+            if  src_2 in str1:
+                src_2 = str1.replace(src_2,'')
+            filename, extension = os.path.splitext(src_2) 
+            values = {'file_name':filename}
+            src_path = event.src_path
+            print("Source: ", src_2 + filename)
+            try:
+                shutil.copy(src_path, dst_path)
+                print("File is modifie successfully.")
+            except:
+                print("Error to modified files")
 
 if __name__ == '__main__':
     w = Watcher()
