@@ -86,6 +86,9 @@ class Handler(FileSystemEventHandler):
                 print("File moved successfully")
             except:
                 print("Error to moved files")
+                
+        elif   event.event_type == "closed":
+            print("Data is closed - %s." % event.src_path)   
 
 if __name__ == '__main__':
     w = Watcher()
