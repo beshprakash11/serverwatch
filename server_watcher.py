@@ -51,7 +51,7 @@ class Handler(FileSystemEventHandler):
         elif event.event_type == 'modified': 
             print("Data modified - %s." % event.src_path) 
             str1 = event.src_path
-            if  src_2 in str1:
+            if src_2 in str1:
                 src_2 = str1.replace(src_2,'')
             filename, extension = os.path.splitext(src_2) 
             values = {'file_name':filename}
@@ -62,6 +62,18 @@ class Handler(FileSystemEventHandler):
                 print("File is modifie successfully.")
             except:
                 print("Error to modified files")
+        
+        elif event.event_type == "deleted":
+            print("Data deleted - %s." % event.src_path)
+            str1 = event.src_path
+            if  src_2 in str1:
+                src_2 = str1.replace(src_2,'')
+            filename, extension = os.path.splitext(src_2) 
+            try:
+                os.remove(dst_path+src_2)
+                print("File removed successfully")
+            except:
+                print("Error to remove files")
 
 if __name__ == '__main__':
     w = Watcher()
