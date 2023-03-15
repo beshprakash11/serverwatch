@@ -74,6 +74,18 @@ class Handler(FileSystemEventHandler):
                 print("File removed successfully")
             except:
                 print("Error to remove files")
+        
+        elif  event.event_type == "moved":
+            print("Data moved - %s." % event.src_path)
+            str1 = event.src_path
+            if  src_2 in str1:
+                src_2 = str1.replace(src_2,'')
+            filename, extension = os.path.splitext(src_2) 
+            try:
+                os.remove(dst_path+src_2)
+                print("File moved successfully")
+            except:
+                print("Error to moved files")
 
 if __name__ == '__main__':
     w = Watcher()
