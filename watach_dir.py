@@ -5,13 +5,13 @@ from watchdog.observers import Observer
 from watchdog.events import FileSystemEventHandler
 
 
-class Watcher:
+class DirectoryWatcher:
     DIRECTORY_TO_WATCH = "./watch_dir/src/"
     def __init__(self):
         self.observer = Observer()
 
     def run(self):
-        event_handler = Handler()
+        event_handler = DirectoryHandler()
         self.observer.schedule(event_handler, self.DIRECTORY_TO_WATCH, recursive=True)
         self.observer.start()
         try:
@@ -22,3 +22,7 @@ class Watcher:
             print ("Error")
 
         self.observer.join()
+
+class DirectoryHandler(FileSystemEventHandler):  
+    @staticmethod
+    def on_any_event(event):
