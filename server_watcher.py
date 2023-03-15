@@ -11,7 +11,7 @@ Watch directory, source, and destnation directory
 watch_dir = "./watch_dir/src/"
 src_1 = "./watch_dir/src/"
 src_2 = "./watch_dir/src/"
-src_dst = "./watch_dir/dst/"
+dst_path = "./watch_dir/dst/"
 
 
 class Watcher:
@@ -36,4 +36,21 @@ class Handler(FileSystemEventHandler):
     def on_any_event(event):
         if event.is_directory:
             return None
+        elif event.event_type == 'created':            
+            print("File is created - %s." %event.src_path)
+
+            str1 = event.src_path
+            if  str2 in str1:
+                str2 = str1.replace(str2,'')
+            filename, extension = os.path.splitext(str2) 
+            values = {'file_name':filename}
+            src_path = event.src_path
+            print("Source: ", src_1 + filename)
+            
+            print("Destination: ", dst_path)
+            shutil.copy(src_path, dst_path)
+            try:
+                shutil.copy(src_path, dst_path)
+            except:
+                print("Data format is not valid !!")
 
