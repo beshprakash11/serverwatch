@@ -34,7 +34,7 @@ class Handler(FileSystemEventHandler):
             print("File is created - %s." %event.src_path)
 
             str1 = event.src_path
-            if  src_2 in str1:
+            if src_2 in str1:
                 src_2 = str1.replace(src_2,'')
             filename, extension = os.path.splitext(src_2) 
             values = {'file_name':filename}
@@ -66,7 +66,7 @@ class Handler(FileSystemEventHandler):
         elif event.event_type == "deleted":
             print("Data deleted - %s." % event.src_path)
             str1 = event.src_path
-            if  src_2 in str1:
+            if src_2 in str1:
                 src_2 = str1.replace(src_2,'')
             filename, extension = os.path.splitext(src_2) 
             try:
@@ -78,7 +78,7 @@ class Handler(FileSystemEventHandler):
         elif  event.event_type == "moved":
             print("Data moved - %s." % event.src_path)
             str1 = event.src_path
-            if  src_2 in str1:
+            if src_2 in str1:
                 src_2 = str1.replace(src_2,'')
             filename, extension = os.path.splitext(src_2) 
             try:
@@ -86,7 +86,7 @@ class Handler(FileSystemEventHandler):
                 print("File moved successfully")
             except:
                 print("Error to moved files")
-                
+
         elif   event.event_type == "closed":
             print("Data is closed - %s." % event.src_path)   
 
