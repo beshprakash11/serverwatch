@@ -30,7 +30,16 @@ class DirectoryHandler(FileSystemEventHandler):
         src_2 = "./watch_dir/src/"
         dst_path = "./watch_dir/dst/"
         if event.is_directory:
-            print("File is created - %s." %event.src_path)
+            action = "created"
+        elif event.event_type == 'modified':
+            action = "updated"
+        elif event.event_type == 'deleted':
+            action = "deleted"
+        elif event.event_type == 'moved':
+            action = "moved"
+        else:
+            action = "unknown"
+        print(f"File {event.src_path} was {action}.")
 if __name__ == '__main__':
     w = DirectoryWatcher()
     w.run()
