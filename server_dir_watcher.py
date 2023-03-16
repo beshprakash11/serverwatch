@@ -34,13 +34,13 @@ class DirectoryHandler(FileSystemEventHandler):
             contents = os.listdir(src_path1)
             for item in contents:
                 if os.path.isdir(os.path.join(src_path1, item)):
-                    if os.path.isdir(os.path.join(src_path1, item + "gcode")):
+                    if os.path.isdir(os.path.join(src_path1, item + "/gcode")):
                         print("Gcode Exist")
-                    if os.path.exists(dst_path + item + "gcode"):
+                    if os.path.exists(dst_path + item + "/gcode"):
                         print("Code alread exit")
                     else:
-                        src_path_gcode = os.path.join(src_path1, item + "gcode")
-                        dst_path_gcode = os.path.join(dst_path, item + "gcode")
+                        src_path_gcode = os.path.join(src_path1, item + "/gcode")
+                        dst_path_gcode = os.path.join(dst_path, item + "/gcode")
                         shutil.copytree(src_path_gcode, dst_path_gcode)
                         print("GCode copy completed")
             
