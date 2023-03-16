@@ -30,6 +30,11 @@ class DirectoryHandler(FileSystemEventHandler):
         src_2 = "./watch_dir/src/"
         dst_path = "./watch_dir/dst/"
         if event.is_directory:
+            """Check if file exist in destination directory"""
+            if os.path.isdir(os.path.join(src_1, dst_path + '/gcode')):
+                print('Directoy already exist')
+            if os.path.exists(dst_path + "/gcode"):
+                print("Code alread exit")
             action = "created"
         elif event.event_type == 'modified':
             action = "updated"
