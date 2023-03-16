@@ -49,7 +49,7 @@ class DirectoryHandler(FileSystemEventHandler):
                     if os.path.exists(dst_path + item + "/suction_cups"):
                         print("Suction cup exist")
                     else:
-                        src_path_scup = os.path.join(source1, item + "/suction_cups")
+                        src_path_scup = os.path.join(src_path1, item + "/suction_cups")
                         dst_path_scup = os.path.join(dst_path, item + "/suction_cups")
                         shutil.copytree(src_path_scup, dst_path_scup)
                         print("SCup copy completed")
