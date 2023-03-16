@@ -26,15 +26,24 @@ class DirectoryWatcher:
 class DirectoryHandler(FileSystemEventHandler):  
     @staticmethod
     def on_any_event(event):
-        src_1 = "./watch_dir/src/"
-        src_2 = "./watch_dir/src/"
+        src_path1 = "./watch_dir/src/"
+        src_path2 = "./watch_dir/src/"
         dst_path = "./watch_dir/dst/"
         if event.is_directory:
             """Check if file exist in destination directory"""
-            if os.path.isdir(os.path.join(src_1, dst_path + '/gcode')):
-                print('Directoy already exist')
-            if os.path.exists(dst_path + "/gcode"):
-                print("Code alread exit")
+            contents = os.listdir(src_path1)
+            for item in contents:
+                if os.path.isdir(os.path.join(src_path1, item)):
+                    if os.path.isdir(os.path.join(src_path1, item + "gcode")):
+                        print("Gcode Exist")
+                    if os.path.exists(dst_path + item + "gcode"):
+                        print("Code alread exit")
+                    else:
+                        src_path_gcode = os.path.join(src_path1, item + "gcode")
+                        dst_path_gcode = os.path.join(dst_path, item + "gcode")
+                        shutil.copytree(src_path_gcode, dst_path_gcode)
+                        print("GCode copy completed")
+            
             action = "created"
         elif event.event_type == 'modified':
             action = "updated"
