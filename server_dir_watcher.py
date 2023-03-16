@@ -1,6 +1,4 @@
-import time
-import os
-import shutil
+import os, shutil, time
 from watchdog.observers import Observer
 from watchdog.events import FileSystemEventHandler
 
@@ -29,32 +27,32 @@ class DirectoryHandler(FileSystemEventHandler):
         src_path1 = "./watch_dir/src/"
         src_path2 = "./watch_dir/src/"
         dst_path = "./watch_dir/dst/"
+        contents = os.listdir(src_path1)
         if event.is_directory:
-            """Check if file exist in destination directory"""
-            contents = os.listdir(src_path1)
+            """Check if file exist in destination directory"""            
             for item in contents:
                 if os.path.isdir(os.path.join(src_path1, item)):
-                    """GCode section"""
-                    if os.path.isdir(os.path.join(src_path1, item + "/gcode")):
-                        print("Gcode Exist")
-                    if os.path.exists(dst_path + item + "/gcode"):
+                    """section"""
+                    if os.path.isdir(os.path.join(src_path1, item + "/code")):
+                        print("code Exist")
+                    if os.path.exists(dst_path + item + "/code"):
                         print("Code alread exit")
                     else:
-                        src_path_gcode = os.path.join(src_path1, item + "/gcode")
-                        dst_path_gcode = os.path.join(dst_path, item + "/gcode")
+                        src_path_gcode = os.path.join(src_path1, item + "/code")
+                        dst_path_gcode = os.path.join(dst_path, item + "/code")
                         shutil.copytree(src_path_gcode, dst_path_gcode)
-                        print("GCode copy completed")
+                        print("Code copy completed")
 
-                    """Suction cups"""
-                    if os.path.exists(dst_path + item + "/suction_cups"):
+                    """cups"""
+                    if os.path.exists(dst_path + item + "/cups"):
                         print("Suction cup exist")
                     else:
-                        src_path_scup = os.path.join(src_path1, item + "/suction_cups")
-                        dst_path_scup = os.path.join(dst_path, item + "/suction_cups")
+                        src_path_scup = os.path.join(src_path1, item + "/cups")
+                        dst_path_scup = os.path.join(dst_path, item + "/cups")
                         shutil.copytree(src_path_scup, dst_path_scup)
-                        print("SCup copy completed")
+                        print("Cup copy completed")
             
-            action = "Gcode | Suction cups crated"
+            action = "code | cups crated"
         elif event.event_type == 'modified':
             action = "updated"
         elif event.event_type == 'deleted':
