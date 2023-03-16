@@ -24,9 +24,9 @@ class DirectoryWatcher:
 class DirectoryHandler(FileSystemEventHandler):  
     @staticmethod
     def on_any_event(event):
-        src_path1 = "./watch_dir/src/"
-        src_path2 = "./watch_dir/src/"
-        dst_path = "./watch_dir/dst/"
+        src_path1 = "watch_dir/src/"
+        src_path2 = "watch_dir/src/"
+        dst_path = "watch_dir/dst/"
         contents = os.listdir(src_path1)
         if event.is_directory:
             """Check if file exist in destination directory"""            
