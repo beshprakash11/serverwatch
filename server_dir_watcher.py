@@ -34,6 +34,7 @@ class DirectoryHandler(FileSystemEventHandler):
             contents = os.listdir(src_path1)
             for item in contents:
                 if os.path.isdir(os.path.join(src_path1, item)):
+                    """GCode section"""
                     if os.path.isdir(os.path.join(src_path1, item + "/gcode")):
                         print("Gcode Exist")
                     if os.path.exists(dst_path + item + "/gcode"):
