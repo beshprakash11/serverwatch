@@ -44,6 +44,15 @@ class DirectoryHandler(FileSystemEventHandler):
                         dst_path_gcode = os.path.join(dst_path, item + "/gcode")
                         shutil.copytree(src_path_gcode, dst_path_gcode)
                         print("GCode copy completed")
+
+                    """Suction cups"""
+                    if os.path.exists(dst_path + item + "/suction_cups"):
+                        print("Suction cup exist")
+                    else:
+                        src_path_scup = os.path.join(source1, item + "/suction_cups")
+                        dst_path_scup = os.path.join(dst_path, item + "/suction_cups")
+                        shutil.copytree(src_path_scup, dst_path_scup)
+                        print("SCup copy completed")
             
             action = "created"
         elif event.event_type == 'modified':
