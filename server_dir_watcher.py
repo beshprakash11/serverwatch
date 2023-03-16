@@ -54,7 +54,7 @@ class DirectoryHandler(FileSystemEventHandler):
                         shutil.copytree(src_path_scup, dst_path_scup)
                         print("SCup copy completed")
             
-            action = "created"
+            action = "Gcode | Suction cups crated"
         elif event.event_type == 'modified':
             action = "updated"
         elif event.event_type == 'deleted':
