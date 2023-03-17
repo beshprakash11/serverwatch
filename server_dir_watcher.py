@@ -32,30 +32,7 @@ class DirectoryHandler(FileSystemEventHandler):
         src_path1 = "/home/beshpd/Documents/serverwatch/watch_dir/src"
         src_path2 = "/home/beshpd/Documents/serverwatch/watch_dir/src"
         dst_path = "/home/beshpd/Documents/serverwatch/watch_dir/dst"
-        contents = os.listdir(src_path1)
-        if event.is_directory:
-            """Check if file exist in destination directory"""
-            for item in contents:
-                if os.path.isdir(os.path.join(src_path1, item)):
-                    """section"""
-                    if os.path.isdir(os.path.join(src_path1, item + "/code")):
-                        print("code Exist")
-                    if os.path.exists(dst_path + item + "/code"):
-                        print("Code alread exit")
-                    else:
-                        src_path_gcode = os.path.join(src_path1, item + "/code")
-                        dst_path_gcode = os.path.join(dst_path, item + "/code")
-                        shutil.copytree(src_path_gcode, dst_path_gcode)
-                        print("Code copy completed")
-
-                    """cups"""
-                    if os.path.exists(dst_path + item + "/cups"):
-                        print("Suction cup exist")
-                    else:
-                        src_path_scup = os.path.join(src_path1, item + "/cups")
-                        dst_path_scup = os.path.join(dst_path, item + "/cups")
-                        shutil.copytree(src_path_scup, dst_path_scup)
-                        print("Cup copy completed")
+        if event.is_directory:           
 
             action = "code | cups crated"
         elif event.event_type == 'modified':
