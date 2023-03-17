@@ -32,9 +32,8 @@ class DirectoryHandler(FileSystemEventHandler):
         src_path1 = "/home/beshpd/Documents/serverwatch/watch_dir/src"
         src_path2 = "/home/beshpd/Documents/serverwatch/watch_dir/src"
         dst_path = "/home/beshpd/Documents/serverwatch/watch_dir/dst"
-        if event.is_directory:           
-
-            action = "code | cups crated"
+        if event.is_directory:     
+            action = event.src_path
         elif event.event_type == 'modified':
             action = "updated"
         elif event.event_type == 'deleted':
